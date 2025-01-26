@@ -7,6 +7,13 @@ WORKDIR /var/www/html
 # Copia los archivos del proyecto al directorio de trabajo
 COPY . .
 
+# Habilita el módulo mod_rewrite
+RUN a2enmod rewrite
+
+# Establece los permisos de archivos y directorios
+RUN chown -R www-data:www-data /var/www/html \
+    && chmod -R 755 /var/www/html
+
 # Instala las dependencias de Composer
 RUN apt-get update && apt-get install -y \
     unzip \
