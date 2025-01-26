@@ -1,4 +1,3 @@
-
 # Api Fake User
 
 This is api basic with php of fake user
@@ -7,12 +6,12 @@ This is api basic with php of fake user
 ## GET
 Index
 
-[http://localhost:3000/api/v1/user](http://localhost:3000/api/v1/user)
+[https://apifakeuser.onrender.com/api/v1/user](https://apifakeuser.onrender.com/api/v1/user)
 
 ## GET ById
 Show
 
-[http://localhost:3000/api/v1/user/id](http://localhost:3000/api/v1/user/id)
+[https://apifakeuser.onrender.com/api/v1/user/1](https://apifakeuser.onrender.com/api/v1/user/1)
 
 return 
 ```json
@@ -41,7 +40,7 @@ return
 ## POST Create
 Store
 
-[http://localhost:3000/api/v1/user](http://localhost:3000/api/v1/user)
+[https://apifakeuser.onrender.com/api/v1/user](https://apifakeuser.onrender.com/api/v1/user)
 
 ``` json
 {
@@ -62,7 +61,7 @@ Store
 ## PUT Update
 Update
 
-[http://localhost:3000/api/v1/user/id](http://localhost:3000/api/v1/user/id)
+[https://apifakeuser.onrender.com/api/v1/user/1](https://apifakeuser.onrender.com/api/v1/user/1)
 
 ```json
 {
@@ -82,7 +81,7 @@ Update
 ## DELETE Destroy
 Destroy
 
-[http://localhost:3000/api/v1/user/id](http://localhost:3000/api/v1/user/id)
+[https://apifakeuser.onrender.com/api/v1/user/1](https://apifakeuser.onrender.com/api/v1/user/1)
 
 
 ## Run Locally
