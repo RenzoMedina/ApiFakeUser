@@ -8,7 +8,7 @@ WORKDIR /var/www/html
 COPY . .
 
 # Copia específicamente el archivo .env al contenedor
-COPY .env .env
+COPY .env_prod .env
 
 # Instala las dependencias de Composer
 RUN apt-get update && apt-get install -y \
