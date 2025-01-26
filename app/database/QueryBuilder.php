@@ -36,7 +36,7 @@ class QueryBuilder{
             echo "Error".$e->getMessage();
         }}
     public function create($data, $table){
-        $values = json_decode($data, true)['personal'];
+        $values = json_decode($data, true);
 
         $sql = "INSERT INTO $table (name,last_name,age,email,phone,address,city,company,job,estado) VALUES (?,?,?,?,?,?,?,?,?,?)";
         try{
@@ -56,26 +56,32 @@ class QueryBuilder{
             echo "Error".$e->getMessage();
         }
     }
-    public function update($data){
-        $fecha = date("Y-m-d H:i:s");
+    public function update($data, $id, $table){
+        $fecha = date('Y-m-d H:i:s');
         $values = json_decode($data, true);        
-        $sql = "UPDATE table_proveedores SET rut=?,nombre=?,categoria=?,estado=?, update_at=? WHERE id=?";
+        $sql = "UPDATE $table SET name=?,last_name=?,age=?, email=?,phone=?,address=?,city=?,company=?,job=?,estado=?, update_at=? WHERE id=?";
         try{
             $query = $this->conn->prepare($sql);
-            $query->bindParam(1,$values['rut_proveedor']);
-            $query->bindParam(2,$values['nombre_proveedor'],PDO::PARAM_STR);
-            $query->bindParam(3,$values['categorias'],PDO::PARAM_STR);
-            $query->bindParam(4, $values['estado'],PDO::PARAM_STR);
-            $query->bindParam(5, $fecha,PDO::PARAM_STR);
-            $query->bindParam(6, $id,PDO::PARAM_INT);
-            $query->execute();
+            $query->bindParam(1,$values['name'],PDO::PARAM_STR);
+            $query->bindParam(2,$values['last_name'],PDO::PARAM_STR);
+            $query->bindParam(3,$values['age'],PDO::PARAM_INT);
+            $query->bindParam(4, $values['email'],PDO::PARAM_STR);
+            $query->bindParam(5, $values['phone'],PDO::PARAM_STR);
+            $query->bindParam(6, $values['address'],PDO::PARAM_STR);
+            $query->bindParam(7, $values['city'],PDO::PARAM_STR);
+            $query->bindParam(8, $values['company'],PDO::PARAM_STR);
+            $query->bindParam(9, $values['job'],PDO::PARAM_STR);
+            $query->bindParam(10, $values['estado'],PDO::PARAM_BOOL);
+            $query->bindParam(11, $fecha,PDO::PARAM_STR);
+            $query->bindParam(12, $id,PDO::PARAM_INT);
+            $query->execute();            
             
         }catch(PDOException $e){
             echo "Error".$e->getMessage();
         }
     }
-    public function delete(){
-        $sql = "DELETE FROM table_venta_basica WHERE id=?";
+    public function delete($table, $id){
+        $sql = "DELETE FROM $table WHERE id=?";
         try{
             $query = $this->conn->prepare($sql);
             $query->bindParam(1,$id, PDO::PARAM_INT);
